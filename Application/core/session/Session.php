@@ -30,19 +30,16 @@ class Session implements SessionInterface
 
   public function get($key)
   {
-    return $this->has($key) ? $_SESSION[$key] : false;
+    return self::has($key) ? $_SESSION[$key] : false;
   }
 
   public function set($key, $value)
   {
     $_SESSION[$key] = $value;
-    return $this;
   }
   public function destroy()
   {
     $_SESSION = [];
     session_destroy();
-    
-    return $this;
   }
 }

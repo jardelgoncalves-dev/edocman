@@ -32,18 +32,18 @@ class Base
             $result = call_user_func([$instance, $method], $param);
             if (!$result) {
                 $code = 404;
-                $this->response = $message_error;
+                $this->response = array('error' => $message_error);
             } else {
-              $this->response = $result;
+              $this->response = array('data' => is_bool($result) ? 'success' : $result);
             }
         } else {
             $code = 500;
-            $this->response = 'There was an internal error. Contact the administrator!';
+            $this->response = array('error' =>'There was an internal error. Contact the administrator!');
         }
 
     } else {
       $code = 400;
-      $this->response = $this->validator->getErrors();
+      $this->response = array('error' =>$this->validator->getErrors());
     }
 
     return array(

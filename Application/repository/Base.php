@@ -30,7 +30,7 @@ class Base
     if (!$this->validator->getErrors()) {
         if (method_exists($instance, $method)) {
             $result = call_user_func([$instance, $method], $param);
-            if (!$result) {
+            if (!$result && is_bool($result)) {
                 $code = 404;
                 $this->response = array('error' => $message_error);
             } else {

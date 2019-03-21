@@ -17,6 +17,7 @@ class CSRF extends Session
   
   public static function is_valid()
   {
+    self::init();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if (self::get('csrf_token') === false || !isset($_POST['csrf_token'])) {
           return false;

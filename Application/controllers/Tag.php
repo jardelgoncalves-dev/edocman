@@ -39,7 +39,7 @@ class Tag extends Controller
   public function store()
   {
     $validator = new Validator(array(
-      'name.required' => $_POST['name']
+      'name.required' => @$_POST['name']
     ));
 
     $RepositoryBase = new Base($validator);

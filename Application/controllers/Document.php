@@ -39,13 +39,13 @@ class Document extends Controller
   public function store()
   {
     $validator = new Validator(array(
-      'filename.required' => $_POST['filename'],
-      'size.required'     => $_POST['size'],
-      'size.float'        => $_POST['size'],
-      'author.required'   => $_POST['author'],
-      'tag_id.required'   => $_POST['tag_id'],
-      'tag_id.integer'    => $_POST['tag_id'],
-      'image.required'    => $_POST['image']
+      'filename.required' => @$_POST['filename'],
+      'size.required'     => @$_POST['size'],
+      'size.float'        => @$_POST['size'],
+      'author.required'   => @$_POST['author'],
+      'tag_id.required'   => @$_POST['tag_id'],
+      'tag_id.integer'    => @$_POST['tag_id'],
+      'image.required'    => @$_POST['image']
     ));
 
     $RepositoryBase = new Base($validator);

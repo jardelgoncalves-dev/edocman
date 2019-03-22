@@ -40,16 +40,22 @@ class User extends Controller
   public function store()
   {
     $validator = new Validator(array(
-      'name.required' => $_POST['name'],
-      'email.required'  => $_POST['email'],
-      'email.email'  => $_POST['email'],
-      'password.required'  => $_POST['password'],
-      'access_level_id.required'  => $_POST['access_level_id'],
-      'access_level_id.integer'  => $_POST['access_level_id']
+      'name.required'            => @$_POST['name'],
+      'email.required'           => @$_POST['email'],
+      'email.email'              => @$_POST['email'],
+      'password.required'        => @$_POST['password'],
+      'access_level_id.required' => @$_POST['access_level_id'],
+      'access_level_id.integer'  => @$_POST['access_level_id']
     ));
 
     $RepositoryBase = new Base($validator);
-    $data = $RepositoryBase->call_method($this->model('Users'), 'save', $_POST, 201);
+    $data = $RepositoryBase->call_method($this->model('Users'), 'save', array(
+      'name'            => @$_POST['name'],
+      'email'           => @$_POST['email'],
+      'password'        => @md5($_POST['password']),
+      'access_level_id' => @$_POST['access_level_id']
+    ), 201);
+
     $this->response->statusCode($data['code'])->setContentType('application/json')
                    ->body($data['response'])->sendJSON();
   }

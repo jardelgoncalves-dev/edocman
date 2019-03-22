@@ -52,11 +52,11 @@ require '../Application/views/layout/head.php';
       result.fail((data) =>{
         $('#message').empty();
         let error = data.responseJSON.error;
-        if (error.password !== undefined && error.email !== undefined) {
+        if (error.password !== undefined || error.email !== undefined) {
           for(let prop in error) {
             $('#message').prepend(create_alert(error[prop][0], 'danger'));
           }
-        }else if (! Array.isArray(error)) {
+        }else {
           $('#message').prepend(create_alert(error, 'danger'));
         }
       });

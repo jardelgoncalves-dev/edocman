@@ -28,4 +28,9 @@ class Users
   {
     return Query::run('SELECT * FROM f_findById_users(?)', array($id))->fetch(PDO::FETCH_ASSOC);
   }
+
+  public function findByEmail($email)
+  {
+    return Query::run('SELECT * FROM f_users_findByEmail(?)', array($email))->fetch(PDO::FETCH_ASSOC);
+  }
 }

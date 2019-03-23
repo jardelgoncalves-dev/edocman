@@ -29,7 +29,8 @@ class App
     if (isset($uri[0]) && !empty($uri[0])) {
       if (class_exists('Application\\controllers\\' . ucfirst($uri[0]))) {
         $this->controller = ucfirst($uri[0]);
-        $this->enabled_error = false;
+      } else {
+        $this->controller = 'Error'; 
       }
     }
     
@@ -39,12 +40,13 @@ class App
   protected function getMethodFromUrl($uri)
   {
     if (isset($uri[1]) && !empty($uri[1])) {
-      if (method_exists($this->controller, $uri[1]) && !$this->enabled_error) {
-        $this->method = $uri[1];
-      } else {
-        $this->callControllerError();
-      }
+      $this->method = $uri[1];
     }
+
+    if (!method_exists($this->controller, $this->method)) {
+      $this->callControllerError();
+    }
+    
   }
 
   protected function getParamsFromUrl($uri)

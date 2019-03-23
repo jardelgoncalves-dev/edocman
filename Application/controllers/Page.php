@@ -41,6 +41,15 @@ class Page extends Controller
       $this->response->statusCode($data['code'])->setContentType('application/json');
 
       if ($data['code'] === 200) {
+        $user = $RepositoryBase->call_method($this->model('Users'), 'findByEmail', 
+                                            $_POST['email'], 200, array());
+        
+        if (count($user['response']['data']) > 0) {
+          $this->session->set('user', $user['response']['data']);
+        } else {
+          $this->session->destroy();
+        }
+
         $this->response->body(array('auth' => '/home'))->sendJSON();
       } else {
         $this->response->body($data['response'])->sendJSON();

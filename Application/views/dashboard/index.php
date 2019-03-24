@@ -26,7 +26,7 @@ require '../Application/views/layout/menu.php';
         </table>
       </div>
       <div class="text-right" style="margin-top:20px">
-        <a href="/document/" class="btn btn-primary-line btn-full">See All</a>
+        <a href="/home/document/" class="btn btn-primary-line btn-full">See All</a>
       </div>
     </div>
   </div>

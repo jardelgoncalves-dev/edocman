@@ -11,9 +11,9 @@
     <div class="nav-wrapper">
       <ul>
         <li><a href="/home">Home</a></li>
-        <li><a href="documents.html">Documents</a></li>
-        <li><a href="tags.html">Tags</a></li>
-        <li><a href="users.html">Users</a></li>
+        <li><a href="/home/document">Documents</a></li>
+        <li><a href="/home/tag">Tags</a></li>
+        <li><a href="/home/user">Users</a></li>
         <li><a href="/page/logout">Logout</a></li>
       </ul>
     </div>

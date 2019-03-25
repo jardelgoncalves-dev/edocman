@@ -1,6 +1,7 @@
 <?php
 namespace Application\helpers;
 
+use finfo;
 final class Validator
 {
     private $errors = [];
@@ -35,9 +36,21 @@ final class Validator
     {
         if (filter_var($variable, FILTER_VALIDATE_EMAIL) === false) {
             $this->errors[$name][] = empty($message) ? 'Invalid email!' : $message;
-            ;
         }
     }
+
+    public function file($variable, string $name, string $message)
+    {
+        $fileinfo = new finfo(FILEINFO_MIME_TYPE);
+        $mimetype = @$fileinfo->file($variable);
+        $valid_extensions = array("image/jpg","image/jpeg","image/png");
+
+        if (!in_array(strtolower($mimetype), $valid_extensions)) {
+            $this->errors[$name][] = empty($message) ? 'Invalid file type!' : $message;
+        }
+    }
+
+    
 
     public function has($key)
     {

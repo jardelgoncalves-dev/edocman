@@ -815,3 +815,14 @@ footer {
 .danger {
   background-color: #ee5253;
 }
+
+.success {
+  background-color: #10ac84;
+}
+
+#loading {
+  position: absolute;
+  height: 40%;
+  width: 90%;
+  z-index: 9999999;
+}

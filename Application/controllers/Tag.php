@@ -60,4 +60,12 @@ class Tag extends Controller
     $this->response->statusCode($data['code'])->setContentType('application/json')
                    ->body($data['response'])->sendJSON();
   }
+
+  public function info()
+  {
+    $RepositoryBase = new Base(new Validator());
+    $data = $RepositoryBase->call_method($this->model('Tags'), 'getInfoTags', null, 200);
+    $this->response->statusCode($data['code'])->setContentType('application/json')
+                   ->body($data['response'])->sendJSON();
+  }
 }

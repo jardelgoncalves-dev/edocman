@@ -26,4 +26,9 @@ class Tags
   {
     return Query::run('SELECT * FROM f_findById_tags(?)', array($id))->fetch(PDO::FETCH_ASSOC);
   }
+
+  public function getInfoTags()
+  {
+    return Query::run('SELECT * FROM f_info_tags()')->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

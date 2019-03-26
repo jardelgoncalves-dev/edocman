@@ -1,0 +1,22 @@
+{
+    "name": "jardel/edocman",
+    "description": "a simple electronic document management system.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jardel Gonçalves",
+            "email": "jardelgoncalves1996@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^3.3",
+        "thiagoalessio/tesseract_ocr": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "Application/"
+        }
+    }
+}

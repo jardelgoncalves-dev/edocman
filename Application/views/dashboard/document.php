@@ -66,11 +66,11 @@ require '../Application/views/layout/menu.php';
         <form method="POST" enctype="multipart/form-data" id="formFile">
           <div class="form-input">
             <label for="forName">Filename</label>
-            <input type="text" id="filename" placeholder="Enter name">
+            <input type="text" id="filename" placeholder="Enter filename">
           </div>
           <div class="form-input">
             <label for="forEmail">Author</label>
-            <input type="text" id="author" placeholder="Enter email">
+            <input type="text" id="author" placeholder="Enter author">
           </div>
           <div class="form-input">
             <label for="forAccessLevel">Tag</label>
